@@ -1,0 +1,15 @@
+ajaxpagination.ajaxcall:
+  path: '/ajaxcall/{id}'
+  defaults:
+    _controller: '\Drupal\ajaxpagination\Controller\AjaxPaginationController::ajaxcall'
+    _title: 'Ajax'
+  requirements:
+    _permission: 'access content'
+    
+ajaxpagination.content:
+  path: '/blogajax'
+  defaults:
+    _controller: '\Drupal\ajaxpagination\Controller\AjaxPaginationController::blogajax'
+    _title: 'Blog'
+  requirements:
+    _permission: 'access content'    

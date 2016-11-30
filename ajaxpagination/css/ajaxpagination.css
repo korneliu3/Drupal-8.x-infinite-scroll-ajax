@@ -1,0 +1,82 @@
+
+         .post_list{
+             cursor: pointer;
+             /*background: #000 !important;*/
+             -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,.15);
+             -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,.15);
+             box-shadow: 0px 0px 5px 0px rgba(0,0,0,.15);
+             line-height: 0 ;
+              
+             
+         }
+         .post_list img{
+           width: 100%;
+          }
+         
+         .post_list:hover .link_ittem{
+              opacity: 0.3;
+            transition: background-color 0.5s ease;
+            background-color: black;
+         }
+         .post_list:hover .inner_postlist{
+             opacity: 1;
+              transition: opacity .5s ease-in-out;
+            -moz-transition: opacity .5s ease-in-out;
+            -webkit-transition: opacity .5s ease-in-out;
+            bottom: 40px;
+             -webkit-transition-property: bottom, top;
+           -webkit-transition-duration: 0.4s;
+         }
+         
+         
+         .inner_postlist{
+            z-index:99999;
+            padding: 15px ;
+            text-align: center;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            color: #fff !important;
+            width: 100%;
+         }
+          .inner_postlist h3 a{
+            color: #fff !important;
+            font-size: 28px;
+            font-weight: bold;
+         }
+         
+         .link_ittem{
+             position: absolute;
+             top: 0;
+             left: 0;
+             display: block;
+             width: 100%;
+             height: 100%;
+             z-index: 999;
+         }
+         
+         .padding{
+	     padding: 10px 5px;
+           }
+           
+           .border_arround_picture{
+               position: absolute;
+               z-index: 1;
+               width: 90%;
+               height: 90%;
+               left: 5%;
+               top: 5%;
+               border:1px solid #fff;
+           } 
+           
+           .load_multiple{
+               background: url("../img/ajax-loader.gif") no-repeat  center center;
+               width: 100%;
+               height: 66px;
+               display: none;
+           }
+           
+           .clear_ajaxpagination{
+               clear: both;
+           } 
+        

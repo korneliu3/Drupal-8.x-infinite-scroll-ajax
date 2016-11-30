@@ -1,0 +1,37 @@
+<?php
+
+function ajaxpagination_theme($existing, $type, $theme, $path) {
+   return array(
+    'test_twig' => array(
+    'variables' => array('test_var' => NULL, 
+                         'loop' => NULL,   
+                         'id' => NULL, 
+                         'image_style'=>NULL),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_page_build()
+ */
+function ajaxpagination_page_build(&$page) {
+  $path = drupal_get_path('module', 'ajaxpagination');
+  $page['#attached']['css'][$path . '/css/ajaxpagination.css'] = array('every_page' => TRUE);
+   
+ // if (\Drupal::config('simple_dialog.settings')->get('js_all')) {
+  //  simple_dialog_attach_js($page, TRUE);
+  //}
+}
+ 
+
+
+function ajaxpagination_element_info_alter(array &$page)  {
+   $page['#attached']['library'][] = 'ajaxpagination/global-styling';
+ }
+ 
+ function ajaxpagination_init_method(){
+    //$page['#attached']['library'][] = 'ajaxpagination/ajaxpagination.global-styling';
+    drupal_add_js(drupal_get_path('module', 'ajaxpagination') . '/js/base.js');
+ }
+ 
