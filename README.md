@@ -1,85 +1,12 @@
-# This plugin is for Drupal 8.x
-The plugin  is developed to made a simple ajax call from your theme or module and get response, similar like in wordpress
-## Install this module on your drupal folder "modules"
-## After activating the module Clear cache from admin panel, from here http://yourwebsitename.com/admin/config/development/performance
- 
-##### 1) Create a file in your theme or module call it functions.php 
-##### 2) In this file functions.php create any function with any name for example let's said 
+# This is a Infinite Ajax scroll of articles
+### This module is for Drupal 8.x 
 
-###### Example php
-```php
-function get_data_from_node() {
-// Get post data
-$limit = \Drupal::request()->request->get("limit"); // OR $limit = $_POST['limit'];
-$id = \Drupal::request()->request->get("id"); // OR $limit = $_POST['id'];
+## 1. Upload the folder ajaxpagination in modules directory in your drupal installation
+## 2. Activate Module
+## 3. Clear Cash from drupal admin www.mywebsite.com/admin/config/development/performance
+## 4. Go to page www.mywebsite.com/blogajax there you will see the list of articeles
+## 5. You have to set up for each article an image 
+## 6. That's it
 
-  // make a simple mysql query, could be insert or update or extract
-   $nids = \Drupal::entityQuery('node')
-   ->condition('type', 'article')
-   ->condition('nid', $id, '<')
-   ->sort('nid', 'DESC')
-   ->range(0, $limit)
-   ->execute();
- $nodes = \Drupal::entityTypeManager()
-   ->getStorage('node')
-   ->loadMultiple($nids);
-      
-
-      foreach( $nodes as $val){
-             echo "<p>". $val->body->value."</p>"  ; // here will show the article content
-        }
-} 
-```
-
-##### 3) HTML CODE, this code is from your *.html.twig
- 
-```html
-<a class="btn" href="#" onclick="my_ajax_load(); return false;">Ajax Test</a>
-
-<div id="ajax-target">Ajax goes here!!!</div>
-```
-
-##### 4) jQuerey CODE
-
-```javascript 
-function my_ajax_load() {
-  var str = "id=22&message=where id= '?'";
-  $.post("/callajax", {'action':'get_data_from_node','id':'6', 'limit':'5' }, function(data) {
-      $("#ajax-target").html(data);
-   });
-}
-
- ```
- 
-##### URL TO SEND POST DATA ALL THE TIME IS THIS  http://mywebsite.com/callajax 
-  
-###### where:
-  
-- "/callajax" - is url // please don't change, keep how is it **/callajax**
-- 'action' - is the name of your function in our case is "get_data_from_node" you can rename how you like
-- 'id' - simple post var
-- 'limit' - simple post var
-
-#### if you want to make ajax call from your module 
-
-##### 1) add to post var type where **type** is the name of module
-example javascript for module 
-
-##### How will look the jQuerey CODE
- ```javascript
-function my_ajax_load() {
-  var str = "id=22&message=where id= '?'";
-  $.post("/callajax", {'action':'get_data_from_node','type':'MyModuleName','id':'6', 'limit':'5' }, function(data) {
-      $("#ajax-target").html(data);
-   });
-}
- 
-```
-
-###### where
- 
-- 'type' - is a module name, your module name
- 
-
-
-##### That's it! Simply An Easy
+# Here is demo how will look 
+![Demo](https://github.com/korneliu3/Drupal-8.x-infinite-scroll-ajax/blob/master/infinite_scroll.png?raw=true)
